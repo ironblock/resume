@@ -435,6 +435,24 @@
       align-items: center;
     }
 
+    .icon.invert::before,
+    .icon.invert::after {
+      -ms-filter: invert;
+      filter: invert(1);
+    }
+
+    .icon.ondark::before,
+    .icon.ondark::after {
+      -ms-filter: invert;
+      filter: grayscale(1) brightness(100);
+    }
+
+    .icon.onlight::before,
+    .icon.onlight::after {
+      -ms-filter: invert;
+      filter: grayscale(1) brightness(0);
+    }
+
     .icon::before,
     .icon::after {
       height: 0;
