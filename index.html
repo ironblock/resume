@@ -553,17 +553,52 @@
     }
 
     .document-header {
-      border-bottom: 1px solid;
+      position: relative;
     }
 
     .document-header h1 {
       font-weight: 800;
-      margin-bottom: 0.25em;
+      margin: 1em 0.5em 0.25em;
+      display: inline-block;
     }
 
     .document-header .subtitle {
       display: inline-block;
-      margin-bottom: 0.75em
+      margin-bottom: 0.75em;
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+    
+    .document-header .contact-info {
+      color: white;
+      background-color: #333;
+      margin: 0;
+      padding: 0.3rem 1.5rem;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      flex-flow: column;
+    }
+
+    .document-header .contact-info li {
+      list-style: none;
+      margin: 0.1rem 0;
+    }
+
+    .document-header .contact-info a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+
+    .document-header .contact-info .icon {
+      flex-flow: row;
+    }
+
+    .document-header .contact-info .icon::before {
+      filter: grayscale(1) brightness(100);
+      margin-right: 0.5em;
     }
 
     .document .title {
@@ -576,15 +611,25 @@
       font-size: 0.825rem;
     }
 
+    .document-footer {
+      background:#333;
+      padding: 1rem 0.5rem;
+      text-align: center;
+    }
+
     .years {
       color: #999999;
     }
 
     .fork-on-github {
-      position: absolute;
-      transform: rotate(45deg);
+      flex-flow: row;
       color: white;
-      background: cornflowerblue;
+      padding: 0.55em 0.8em;
+      border-radius: 0.15em;
+      background-color: #3E3E3E;
+    }
+    .fork-on-github::before {
+      margin-right: 0.5em;
     }
 
     .projects {
@@ -726,10 +771,17 @@
         font-size: 16px;
       }
 
+      .document-header .contact-info {
+        padding: 0.6rem 0;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-flow: row;
+      }
+
       .technologies li {
         margin: 0.6rem 0.5rem;
         flex: 1 0 15%;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
 
       .technologies .icon {
@@ -1006,23 +1058,16 @@
       </div>
     </section>
 
-    <footer class="document-footer synth-bold">
+    <footer class="document-footer">
+        <a
+        class="icon before github ondark fork-on-github"
+        href="https://github.com/ironblock/resume/edit/index.html"
+        role="button"
+      >
+        Fork this resume on GitHub
+      </a>
     </footer>
   </main>
 </body>
 </html>
- <!DOCTYPE html>
- <html>
- <head>
-   <meta charset="utf-8" />
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Page Title</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-   <script src="main.js"></script>
- </head>
- <body>
-
- </body>
- </html>
  
