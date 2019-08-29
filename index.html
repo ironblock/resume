@@ -613,7 +613,7 @@
 
     .document-footer {
       background:#333;
-      padding: 1rem 0.5rem;
+      padding: 0.5rem;
       text-align: center;
     }
 
@@ -627,6 +627,7 @@
       padding: 0.55em 0.8em;
       border-radius: 0.15em;
       background-color: #3E3E3E;
+      font-size: 0.85rem;
     }
     .fork-on-github::before {
       margin-right: 0.5em;
@@ -635,7 +636,7 @@
     .projects {
       display: flex;
       flex-flow: row wrap;
-      margin: 1rem 0.5rem 2.5rem;
+      margin: 1rem 0.5rem 1.75rem;
       position: relative;
       font-size: 0.9rem
     }
@@ -716,10 +717,23 @@
     }
 
     /* EVENTS */
+
+    .employer.remote::after {
+      content: "remote";
+      display: inline-block;
+      margin: -0.25em 0.75em 0;
+      background: #888888;
+      color: white;
+      border-radius: 0.15em;
+      font-size: 0.65em;
+      text-transform: uppercase;
+      padding: 0.25em 0.5em;
+      vertical-align: middle;
+    }
     .resume-event {
       display: flex;
       align-items: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .event-years,
@@ -790,8 +804,8 @@
 
       .technologies .icon.before::before,
       .technologies .icon.after::after { 
-        min-height: 2em;
-        min-width: 2em;
+        min-height: 1.85em;
+        min-width: 1.85em;
         font-size: inherit;
         margin-bottom: 0;
       }
@@ -922,7 +936,7 @@
           </span>
           <span class="event-details">
             <p class="title">Web Application Architect</p>
-            <p class="subtitle employer"><a href="https://bluecrewjobs.com">Bluecrew, Inc.</a> (WOS of <a href="https://iac.com">IAC</a>), Remote (San Francisco, California)</p>
+            <p class="subtitle employer remote"><a href="https://bluecrewjobs.com">Bluecrew, Inc.</a> (WOS of <a href="https://iac.com">IAC</a>), San Francisco, California</p>
           </span>
         </dt>
         <dd>
@@ -960,7 +974,7 @@
           </span>
           <span class="event-details">
             <p class="title">Web Team Lead, Architect</p>
-            <p class="subtitle employer"><a href="https://trov.com">Trov, Inc.</a>, Remote (Danville, California)</p>
+            <p class="subtitle employer remote"><a href="https://trov.com">Trov, Inc.</a>, Danville, California</p>
           </span>
         </dt>
         <dd>
