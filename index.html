@@ -603,6 +603,11 @@
         -webkit-text-stroke: 0.015em;
       }
 
+      /* VARIABLES */
+      :root {
+        --marker-col-width: 7rem;
+      }
+
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
       body {
         font-family: "Lato Latin (Embedded)", Helvetica, sans-serif;
@@ -704,10 +709,6 @@
         text-align: center;
       }
 
-      .years {
-        color: #121212;
-      }
-
       .fork-on-github {
         flex-flow: row;
         color: white;
@@ -732,7 +733,6 @@
       .projects .title {
         font-size: inherit;
         margin: 0;
-        padding: 0;
       }
 
       .projects p {
@@ -802,10 +802,13 @@
 
       /* EVENTS */
 
-      .employer.remote::after {
+      .work-experience {
+        padding-left: var(--marker-col-width);
+      }
+
+      .remote::after {
         content: "remote";
         display: inline-block;
-        margin: -0.25em 0.75em 0;
         background: #888888;
         color: white;
         border-radius: 0.15em;
@@ -817,7 +820,7 @@
 
       .job-description,
       .projects {
-        margin-left: 2rem;
+        margin-left: 0;
       }
 
       .job-description .projects {
@@ -827,27 +830,66 @@
       .resume-event {
         display: flex;
         align-items: center;
-        margin-left: 2rem;
         margin-bottom: 1rem;
-        justify-content: space-between;
-        flex-direction: row-reverse;
+        position: relative;
+        /* justify-content: space-between; */
+        /* flex-direction: row-reverse; */
       }
 
-      .event-years {
-        text-align: left;
-        width: 6.5rem;
-        font-size: 0.85em;
-        padding-left: 0.5rem;
+      .event-marker {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        align-content: flex-end;
+        align-items: flex-end;
+        width: var(--marker-col-width);
+        font-size: 0.75em;
+        position: absolute;
+        left: calc(-1 * var(--marker-col-width));
       }
 
-      .event-years time + time::before {
+      .event-marker time,
+      .event-marker address {
+        font-weight: normal;
+        font-style: normal;
+      }
+      .event-marker time {
+        flex: 0 1 auto;
+        /* display: inline-block; */
+      }
+      .event-marker address {
+        min-width: 100%;
+        flex: 0 0 100%;
+        text-align: center;
+        /* justify-self: stretch; */
+        /* display: block; */
+      }
+      .event-marker .remote::after {
+        flex: 0 0 100%;
+        display: block;
+        position: absolute;
+        /* align-self: flex-end; */
+        /* width: auto; */
+        /* float: right; */
+        /* clear: left; */
+        margin: 0 auto;
+      }
+
+      .event-marker time + time::before {
         content: " - ";
       }
 
       .event-details .title,
       .event-details .subtitle {
         margin: 0;
-        padding: 0.125rem 0;
+        padding: 0;
+        display: inline-block;
+      }
+
+      .event-details .subtitle::before {
+        content: "|";
+        font-size: inherit;
+        margin: 0 0.85em;
       }
 
       /* TABLET */
@@ -1020,17 +1062,17 @@
       <!-- WORK EXPERIENCE -->
       <section class="resume-section experience">
         <h2>Experience</h2>
-        <dl>
+        <dl class="work-experience">
           <!-- AURAL ANALYTICS -->
           <dt class="resume-event">
-            <span class="years event-years">
+            <span class="event-marker">
               <time datetime="2019">2019</time><time>Today</time>
+              <address class="remote">Scottsdale, AZ</address>
             </span>
             <span class="event-details">
               <p class="title">Web Application Architect</p>
-              <p class="subtitle employer remote">
-                <a href="https://auralanalytics.com">Aural Analytics</a>,
-                Scottsdale, AZ
+              <p class="subtitle employer">
+                <a href="https://auralanalytics.com">Aural Analytics</a>
               </p>
             </span>
           </dt>
@@ -1060,14 +1102,15 @@
 
           <!-- BLUECREW -->
           <dt class="resume-event">
-            <span class="years event-years">
+            <span class="event-marker">
               <time datetime="2018">2018</time><time datetime="2019">2019</time>
+              <address class="remote">San Francisco, CA</address>
             </span>
             <span class="event-details">
               <p class="title">Web Team Lead, Architect</p>
-              <p class="subtitle employer remote">
+              <p class="subtitle employer">
                 <a href="https://bluecrewjobs.com">Bluecrew, Inc.</a> (WOS of
-                <a href="https://iac.com">IAC</a>), San Francisco, California
+                <a href="https://iac.com">IAC</a>)
               </p>
             </span>
           </dt>
@@ -1094,13 +1137,14 @@
 
           <!-- TROV -->
           <dt class="resume-event">
-            <span class="years event-years">
+            <span class="event-marker">
               <time datetime="2016">2016</time><time datetime="2018">2018</time>
+              <address class="remote">Danville, CA</address>
             </span>
             <span class="event-details">
               <p class="title">Web Team Lead, Architect</p>
-              <p class="subtitle employer remote">
-                <a href="https://trov.com">Trov, Inc.</a>, Danville, California
+              <p class="subtitle employer">
+                <a href="https://trov.com">Trov, Inc.</a>
               </p>
             </span>
           </dt>
@@ -1127,14 +1171,14 @@
 
           <!-- IXSYSTEMS -->
           <dt class="resume-event">
-            <span class="years event-years">
+            <span class="event-marker">
               <time datetime="2014">2014</time><time datetime="2015">2015</time>
+              <address>San Jose, CA</address>
             </span>
             <span class="event-details">
               <p class="title">Senior Web Developer</p>
               <p class="subtitle employer">
-                <a href="https://ixsystems.com">iXsystems, Inc.</a>, San Jose,
-                California
+                <a href="https://ixsystems.com">iXsystems, Inc.</a>
               </p>
             </span>
           </dt>
@@ -1161,15 +1205,15 @@
 
           <!-- NAMedia -->
           <dt class="resume-event">
-            <span class="years event-years">
+            <span class="event-marker">
               <time datetime="2011">2011</time><time datetime="2014">2014</time>
+              <address>Cayman Islands</address>
             </span>
             <span class="event-details">
               <p class="title">Web Developer, Lead Designer</p>
               <p class="subtitle employer">
                 <a href="https://domainnamesales.com">NAmedia</a> (dba
-                <a href="https://uniregistry.com">Uniregistry Corp.</a>), Seven
-                Mile Beach, Cayman Islands
+                <a href="https://uniregistry.com">Uniregistry Corp.</a>)
               </p>
             </span>
           </dt>
@@ -1234,7 +1278,7 @@
       <section class="resume-section education">
         <h2>Education</h2>
         <div class="resume-event degree">
-          <span class="years event-years">
+          <span class="event-marker">
             <time datetime="2012">2012</time>
           </span>
           <span class="event-details">
