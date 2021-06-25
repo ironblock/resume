@@ -605,7 +605,7 @@
 
       /* VARIABLES */
       :root {
-        --marker-col-width: 7rem;
+        --marker-col-width: 10rem;
       }
 
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
@@ -755,7 +755,8 @@
         margin: 0.25rem 0 1rem;
       }
 
-      .tag::before {
+      .tag::before,
+      .tag::after {
         text-transform: uppercase;
         display: inline-block;
         border: 1px solid;
@@ -765,6 +766,7 @@
         font-weight: normal;
         margin-right: 0.5rem;
         color: #666;
+        vertical-align: middle;
       }
 
       .tag.webapp::before {
@@ -773,6 +775,12 @@
 
       .tag.library::before {
         content: "library";
+      }
+
+      .tag.remote::after {
+        content: "remote";
+        background: #888888;
+        color: white;
       }
 
       .technologies {
@@ -801,21 +809,8 @@
       }
 
       /* EVENTS */
-
       .work-experience {
         padding-left: var(--marker-col-width);
-      }
-
-      .remote::after {
-        content: "remote";
-        display: inline-block;
-        background: #888888;
-        color: white;
-        border-radius: 0.15em;
-        font-size: 0.65em;
-        text-transform: uppercase;
-        padding: 0.25em 0.5em;
-        vertical-align: middle;
       }
 
       .job-description,
@@ -832,51 +827,37 @@
         align-items: center;
         margin-bottom: 1rem;
         position: relative;
-        /* justify-content: space-between; */
-        /* flex-direction: row-reverse; */
       }
 
       .event-marker {
         display: flex;
         flex-flow: row wrap;
-        justify-content: flex-end;
-        align-content: flex-end;
-        align-items: flex-end;
+        justify-content: center;
         width: var(--marker-col-width);
-        font-size: 0.75em;
+        font-size: 0.85em;
         position: absolute;
+        top: 0;
         left: calc(-1 * var(--marker-col-width));
       }
 
       .event-marker time,
-      .event-marker address {
+      .event-marker address,
+      .event-marker.remote::after {
         font-weight: normal;
         font-style: normal;
-      }
-      .event-marker time {
-        flex: 0 1 auto;
-        /* display: inline-block; */
-      }
-      .event-marker address {
-        min-width: 100%;
-        flex: 0 0 100%;
-        text-align: center;
-        /* justify-self: stretch; */
-        /* display: block; */
-      }
-      .event-marker .remote::after {
-        flex: 0 0 100%;
-        display: block;
-        position: absolute;
-        /* align-self: flex-end; */
-        /* width: auto; */
-        /* float: right; */
-        /* clear: left; */
-        margin: 0 auto;
+        line-height: 1.5em;
+        display: inline-flex;
+        flex: 0;
+        margin: 0;
       }
 
       .event-marker time + time::before {
         content: " - ";
+        white-space: pre;
+      }
+
+      .event-marker address {
+        flex: 0 1 100%;
       }
 
       .event-details .title,
@@ -1065,9 +1046,9 @@
         <dl class="work-experience">
           <!-- AURAL ANALYTICS -->
           <dt class="resume-event">
-            <span class="event-marker">
+            <span class="event-marker tag remote">
               <time datetime="2019">2019</time><time>Today</time>
-              <address class="remote">Scottsdale, AZ</address>
+              <address>Scottsdale, AZ</address>
             </span>
             <span class="event-details">
               <p class="title">Web Application Architect</p>
@@ -1102,9 +1083,9 @@
 
           <!-- BLUECREW -->
           <dt class="resume-event">
-            <span class="event-marker">
+            <span class="event-marker tag remote">
               <time datetime="2018">2018</time><time datetime="2019">2019</time>
-              <address class="remote">San Francisco, CA</address>
+              <address>San Francisco, CA</address>
             </span>
             <span class="event-details">
               <p class="title">Web Team Lead, Architect</p>
@@ -1137,9 +1118,9 @@
 
           <!-- TROV -->
           <dt class="resume-event">
-            <span class="event-marker">
+            <span class="event-marker tag remote">
               <time datetime="2016">2016</time><time datetime="2018">2018</time>
-              <address class="remote">Danville, CA</address>
+              <address>Danville, CA</address>
             </span>
             <span class="event-details">
               <p class="title">Web Team Lead, Architect</p>
