@@ -608,14 +608,16 @@
       }
     </style>
 
-    <!-- CUSTOM PAGE STYLES -->
+    <!-- VARIABLES -->
     <style>
-      /* VARIABLES */
       :root {
         --marker-col-width: 8rem;
         --train-stop-offset: 1.5rem;
       }
+    </style>
 
+    <!-- CUSTOM PAGE STYLES -->
+    <style>
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
       body {
         font-family: "Lato Latin (Embedded)", Helvetica, sans-serif;
@@ -624,6 +626,7 @@
         justify-content: center;
         font-size: 12px;
         color: black;
+        background: white;
       }
 
       h2 {
@@ -799,8 +802,8 @@
         margin: 0;
       }
 
-      .technologies li {
-        flex: 1 0 25%;
+      .technologies .icon {
+        flex: 1;
         margin: 0.4rem 0.5rem 0.15rem;
         text-decoration: none;
         list-style: none;
@@ -808,6 +811,7 @@
         text-transform: uppercase;
         font-size: 0.65rem;
         text-align: center;
+        justify-content: flex-start;
       }
 
       .technologies .icon::before,
@@ -816,7 +820,28 @@
         margin-bottom: 0.25rem;
       }
 
-      /* EVENTS */
+      @media screen and (min-width: 900px) {
+        .technologies .icon {
+          flex: 1 0 15%;
+          flex-flow: row nowrap;
+        }
+
+        .technologies .icon.before::before,
+        .technologies .icon.after::after {
+          min-height: 1.85em;
+          min-width: 1.85em;
+          font-size: inherit;
+          margin-bottom: 0;
+        }
+
+        .technologies .icon.before::before {
+          margin-right: 0.4rem;
+        }
+
+        .technologies .icon.after::after {
+          margin-left: 0.4rem;
+        }
+      }
 
       /* EVENTS */
       .work-experience {
@@ -896,30 +921,42 @@
       .event-details .employer {
         border-left: 1px solid black;
         padding-left: 1em;
-        margin-left: 0.75em;
+        margin-left: 1em;
         font-size: 0.825em;
-        line-height: 1.5em;
       }
+    </style>
 
-      .event-details address {
-        font-weight: normal;
-        font-style: normal;
-      }
-
-      /* TABLET */
-      @media (min-width: 480px) {
+    <!-- RESPONSIVE -->
+    <style>
+      /**
+       * BREAKPOINTS
+       * https://www.freecodecamp.org/news/the-100-correct-way-to-do-css-breakpoints-88d6a5ba1862/
+       * Phone (Portrait):    600px
+       * Tablet (Portrait):   900px
+       * Desktop (Regular):   1200px
+       * Desktop (Large):     1800px
+       */
+      
+      /* Small Devices Only */
+      @media screen and (max-width: 600px) {
         .document {
-          margin: 2em;
+          margin: 1rem 0.5rem;
           background: white;
-          box-shadow: 0.3em 0.3em 2em 0.4em rgba(0, 0, 0, 0.07);
+          box-shadow: 0.3rem 0.3rem 2rem 0.4rem rgba(0, 0, 0, 0.07);
         }
       }
 
-      /* SMALL DESKTOP */
-      @media (min-width: 720px) {
+      /* Tablet (Portrait) and Larger */
+      @media screen and (min-width: 900px) {
         body {
           background: #e5e5e5;
           font-size: 16px;
+        }
+
+        .document {
+          margin: 2rem 0;
+          background: white;
+          box-shadow: 0.3rem 0.3rem 2rem 0.4rem rgba(0, 0, 0, 0.07);
         }
 
         .document-header .contact-info {
@@ -928,36 +965,6 @@
           justify-content: space-evenly;
           flex-flow: row;
         }
-
-        .technologies li {
-          margin: 0.6rem 0.5rem;
-          flex: 1 0 15%;
-          font-size: 0.7rem;
-        }
-
-        .technologies .icon {
-          flex-flow: row nowrap;
-        }
-
-        .technologies .icon.before::before,
-        .technologies .icon.after::after {
-          min-height: 1.85em;
-          min-width: 1.85em;
-          font-size: inherit;
-          margin-bottom: 0;
-        }
-
-        .technologies .icon.before::before {
-          margin-right: 0.4rem;
-        }
-
-        .technologies .icon.after::after {
-          margin-left: 0.4rem;
-        }
-      }
-
-      /* LARGE DESKTOP */
-      @media (min-width: 1080px) {
       }
     </style>
 
@@ -1059,17 +1066,19 @@
           <li class="icon js before">JavaScript</li>
           <li class="icon typescript before">TypeScript</li>
           <li class="icon node before">Node.js</li>
-          <li class="icon shell before">Shell (Bash)</li>
+          <li class="icon shell before">Shell</li>
           <li class="icon rust before">Rust</li>
+          
           <!-- Major Libraries -->
           <li class="icon react before">React</li>
-          <li class="icon react before">React-Native</li>
           <li class="icon redux before">Redux</li>
+          <li class="icon redux before">Next.js</li>
           <li class="icon webpack before">Webpack</li>
-          <li class="icon flow before">Flow</li>
+          
           <!-- Design Tools -->
+          <li class="icon maya before">Unreal</li>
           <li class="icon maya before">Maya</li>
-          <li class="icon zbrush before">zbrush</li>
+          <li class="icon zbrush before">Babylon.js</li>
           <li class="icon photoshop before">Photoshop</li>
           <li class="icon illustrator before">Illustrator</li>
           <li class="icon aftereffects before">AfterEffects</li>
@@ -1086,12 +1095,11 @@
               <time datetime="2019">2019</time><time>Today</time>
             </span>
             <span class="event-details">
-              <strong class="job-title tag remote"
+              <strong class="job-title"
                 >Web Application Architect</strong
               >
-              <span class="employer">
+              <span class="employer tag remote">
                 <a href="https://auralanalytics.com">Aural Analytics</a>
-                <address>Scottsdale, AZ</address>
               </span>
             </span>
           </dt>
@@ -1125,15 +1133,14 @@
               <time datetime="2018">2018</time><time datetime="2019">2019</time>
             </span>
             <span class="event-details">
-              <strong class="job-title tag remote"
+              <strong class="job-title"
                 >Web Team Lead, Architect</strong
               >
-              <span class="employer">
+              <span class="employer tag remote">
                 <a href="https://bluecrewjobs.com">Bluecrew</a> (<a
                   href="https://iac.com"
                   >IAC</a
                 >)
-                <address>San Francisco, CA</address>
               </span>
             </span>
           </dt>
@@ -1164,12 +1171,11 @@
               <time datetime="2016">2016</time><time datetime="2018">2018</time>
             </span>
             <span class="event-details">
-              <strong class="job-title tag remote"
+              <strong class="job-title"
                 >Web Team Lead, Architect</strong
               >
-              <span class="employer">
+              <span class="employer tag remote">
                 <a href="https://Trōv.com">Trōv</a>
-                <address>Danville, CA</address>
               </span>
             </span>
           </dt>
@@ -1200,10 +1206,9 @@
               <time datetime="2014">2014</time><time datetime="2015">2015</time>
             </span>
             <span class="event-details">
-              <strong class="job-title tag remote">Senior Web Developer</strong>
+              <strong class="job-title">Senior Web Developer</strong>
               <span class="employer">
                 <a href="https://ixsystems.com">iXsystems</a>
-                <address>San Jose, CA</address>
               </span>
             </span>
           </dt>
@@ -1234,12 +1239,11 @@
               <time datetime="2011">2011</time><time datetime="2014">2014</time>
             </span>
             <span class="event-details">
-              <strong class="job-title tag remote"
+              <strong class="job-title"
                 >Web Developer, Lead Designer</strong
               >
               <span class="employer">
                 <a href="https://uniregistry.com">Uniregistry</a>
-                <address>Cayman Islands</address>
               </span>
             </span>
           </dt>
