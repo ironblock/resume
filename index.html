@@ -611,8 +611,10 @@
     <!-- VARIABLES -->
     <style>
       :root {
-        --marker-col-width: 8rem;
+        --aside-width: 8rem;
         --train-stop-offset: 1.5rem;
+
+        --color-primary: rgb(15, 100, 190);
       }
     </style>
 
@@ -649,6 +651,24 @@
         margin: 0;
       }
 
+      main {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      main header,
+      main footer {
+        flex: 0 0 100%;
+      }
+
+      main aside {
+        flex: 0 0 30%;
+      }
+
+      main article {
+        flex: 1;
+      }
+
       .document {
         flex: 1;
         max-width: 8.5in;
@@ -673,9 +693,7 @@
         vertical-align: middle;
       }
 
-      .document-header .contact-info {
-        color: white;
-        background-color: #333;
+      .contact-info {
         margin: 0;
         padding: 0.3rem 1.5rem;
         font-size: 0.8rem;
@@ -685,21 +703,21 @@
         flex-flow: column;
       }
 
-      .document-header .contact-info li {
+      .contact-info li {
         list-style: none;
         margin: 0.1rem 0;
       }
 
-      .document-header .contact-info a {
+      .contact-info a {
         text-decoration: none;
         color: inherit;
       }
 
-      .document-header .contact-info .icon {
+      .contact-info .icon {
         flex-flow: row;
       }
 
-      .document-header .contact-info .icon::before {
+      .contact-info .icon::before {
         filter: grayscale(1) brightness(100);
         margin-right: 0.5em;
       }
@@ -722,7 +740,6 @@
 
       .fork-on-github {
         flex-flow: row;
-        color: white;
         padding: 0.55em 0.8em;
         border-radius: 0.15em;
         background-color: #3e3e3e;
@@ -845,9 +862,8 @@
 
       /* EVENTS */
       .work-experience {
-        margin-left: calc(var(--marker-col-width) - var(--train-stop-offset));
         padding-left: var(--train-stop-offset);
-        border-left: 4px solid #EEE;
+        border-left: 4px solid #eee;
       }
 
       .job-description,
@@ -868,12 +884,7 @@
         display: flex;
         justify-content: end;
         align-items: center;
-        width: var(--marker-col-width);
         font-size: 0.85em;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: calc(-1 * var(--marker-col-width));
       }
 
       .event-marker time {
@@ -899,18 +910,18 @@
       .event-details .job-title::before {
         content: "";
 
-        box-sizing: content-box;
-        height: 1rem;
-        width: 1rem;
+        /* box-sizing: content-box;
+        height: 0.5rem;
+        width: 0.5rem;
         display: block;
         border-radius: 50%;
-        border: 4px solid #DDD;
+        border: 4px solid #ddd;
         position: absolute;
         background: white;
         top: 0;
         left: calc(var(--train-stop-offset) * -1.5);
         padding: 0;
-        margin: -2px 0 0 -2px;
+        margin: -2px 0 0 -2px; */
       }
 
       .event-details .job-title,
@@ -919,7 +930,7 @@
       }
 
       .event-details .employer {
-        border-left: 1px solid black;
+        border-left: 1px solid;
         padding-left: 1em;
         margin-left: 1em;
         font-size: 0.825em;
@@ -936,7 +947,7 @@
        * Desktop (Regular):   1200px
        * Desktop (Large):     1800px
        */
-      
+
       /* Small Devices Only */
       @media screen and (max-width: 600px) {
         .document {
@@ -959,7 +970,7 @@
           box-shadow: 0.3rem 0.3rem 2rem 0.4rem rgba(0, 0, 0, 0.07);
         }
 
-        .document-header .contact-info {
+        .contact-info {
           padding: 0.6rem 0;
           align-items: center;
           justify-content: space-evenly;
@@ -1050,17 +1061,11 @@
             <a href="mailto:corey@vixie.enterprises">corey@vixie.enterprises</a>
           </li>
           <li><a href="tel:16507733158">+1 (650) 773 - 3158</a></li>
-          <li class="icon ondark twitter before">
-            <a href="https://twitter.com/corey">@corey</a>
-          </li>
-          <li class="icon ondark github before">
-            <a href="https://github.com/ironblock">ironblock</a>
-          </li>
         </ul>
       </header>
 
       <!-- SUMMARY -->
-      <section class="software">
+      <aside>
         <ul class="technologies">
           <!-- Languages / Platforms -->
           <li class="icon js before">JavaScript</li>
@@ -1068,13 +1073,13 @@
           <li class="icon node before">Node.js</li>
           <li class="icon shell before">Shell</li>
           <li class="icon rust before">Rust</li>
-          
+
           <!-- Major Libraries -->
           <li class="icon react before">React</li>
           <li class="icon redux before">Redux</li>
           <li class="icon redux before">Next.js</li>
           <li class="icon webpack before">Webpack</li>
-          
+
           <!-- Design Tools -->
           <li class="icon maya before">Unreal</li>
           <li class="icon maya before">Maya</li>
@@ -1083,24 +1088,72 @@
           <li class="icon illustrator before">Illustrator</li>
           <li class="icon aftereffects before">AfterEffects</li>
         </ul>
-      </section>
+
+        <!-- OPEN SOURCE -->
+        <section>
+          <h3>Open Source</h3>
+          <dl class="projects">
+            <dt>
+              <a href="https://github.com/ironblock/RASCL"
+                >Redux API State Caching Layer (RASCL)</a
+              >
+            </dt>
+            <dd>
+              <p>
+                Library to automatically set up strongly typed Redux "loops"
+                (constants, actions, sagas, reducer) given a simple map of API
+                calls.
+              </p>
+            </dd>
+
+            <dt>
+              <a href="https://github.com/ironblock/black-scholes-wasm"
+                >WebAssembly Stock Option Pricer</a
+              >
+            </dt>
+            <dd>
+              <p>
+                Rust/Webassembly port of a Black-Scholes pricer for stock
+                options and other financial instruments. Able to leverage SIMD
+                to accelerate calculation in some modern browsers.
+              </p>
+            </dd>
+          </dl>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="education">
+          <h3>Education</h3>
+          <div class="resume-event degree">
+            <span class="">
+              <time datetime="2012">2012</time>
+            </span>
+            <span class="event-details">
+              <p class="title">
+                Bachelor of Applied Science, Video Game Art and Design
+              </p>
+              <p class="subtitle school">
+                Ex'pression College of Digital Arts, Emeryville, California
+              </p>
+            </span>
+          </div>
+        </section>
+      </aside>
 
       <!-- WORK EXPERIENCE -->
-      <section class="resume-section experience">
+      <article class="experience">
         <h2>Experience</h2>
         <dl class="work-experience">
           <!-- AURAL ANALYTICS -->
           <dt class="resume-event">
-            <span class="event-marker">
-              <time datetime="2019">2019</time><time>Today</time>
-            </span>
             <span class="event-details">
-              <strong class="job-title"
-                >Web Application Architect</strong
-              >
+              <strong class="job-title">Web Application Architect</strong>
               <span class="employer tag remote">
                 <a href="https://auralanalytics.com">Aural Analytics</a>
               </span>
+            </span>
+            <span class="event-marker">
+              <time datetime="2019">2019</time><time>Today</time>
             </span>
           </dt>
           <dd>
@@ -1129,19 +1182,17 @@
 
           <!-- BLUECREW -->
           <dt class="resume-event">
-            <span class="event-marker">
-              <time datetime="2018">2018</time><time datetime="2019">2019</time>
-            </span>
             <span class="event-details">
-              <strong class="job-title"
-                >Web Team Lead, Architect</strong
-              >
+              <strong class="job-title">Web Team Lead, Architect</strong>
               <span class="employer tag remote">
                 <a href="https://bluecrewjobs.com">Bluecrew</a> (<a
                   href="https://iac.com"
                   >IAC</a
                 >)
               </span>
+            </span>
+            <span class="event-marker">
+              <time datetime="2018">2018</time><time datetime="2019">2019</time>
             </span>
           </dt>
           <dd>
@@ -1167,16 +1218,14 @@
 
           <!-- TRŌV -->
           <dt class="resume-event">
-            <span class="event-marker">
-              <time datetime="2016">2016</time><time datetime="2018">2018</time>
-            </span>
             <span class="event-details">
-              <strong class="job-title"
-                >Web Team Lead, Architect</strong
-              >
+              <strong class="job-title">Web Team Lead, Architect</strong>
               <span class="employer tag remote">
                 <a href="https://Trōv.com">Trōv</a>
               </span>
+            </span>
+            <span class="event-marker">
+              <time datetime="2016">2016</time><time datetime="2018">2018</time>
             </span>
           </dt>
           <dd>
@@ -1202,14 +1251,14 @@
 
           <!-- IXSYSTEMS -->
           <dt class="resume-event">
-            <span class="event-marker">
-              <time datetime="2014">2014</time><time datetime="2015">2015</time>
-            </span>
             <span class="event-details">
               <strong class="job-title">Senior Web Developer</strong>
               <span class="employer">
                 <a href="https://ixsystems.com">iXsystems</a>
               </span>
+            </span>
+            <span class="event-marker">
+              <time datetime="2014">2014</time><time datetime="2015">2015</time>
             </span>
           </dt>
           <dd>
@@ -1235,16 +1284,14 @@
 
           <!-- NAMedia -->
           <dt class="resume-event">
-            <span class="event-marker">
-              <time datetime="2011">2011</time><time datetime="2014">2014</time>
-            </span>
             <span class="event-details">
-              <strong class="job-title"
-                >Web Developer, Lead Designer</strong
-              >
+              <strong class="job-title">Web Developer, Lead Designer</strong>
               <span class="employer">
                 <a href="https://uniregistry.com">Uniregistry</a>
               </span>
+            </span>
+            <span class="event-marker">
+              <time datetime="2011">2011</time><time datetime="2014">2014</time>
             </span>
           </dt>
           <dd>
@@ -1270,66 +1317,26 @@
             </dl>
           </dd>
         </dl>
-      </section>
-
-      <!-- OPEN SOURCE -->
-      <section class="resume-section">
-        <h2>Open Source</h2>
-        <dl class="projects">
-          <dt class="title tag library">
-            <a href="https://github.com/ironblock/RASCL"
-              >Redux API State Caching Layer (RASCL)</a
-            >
-          </dt>
-          <dd>
-            <p>
-              Library to automatically set up strongly typed Redux "loops"
-              (constants, actions, sagas, reducer) given a simple map of API
-              calls.
-            </p>
-          </dd>
-
-          <dt class="title tag library">
-            <a href="https://github.com/ironblock/black-scholes-wasm"
-              >WebAssembly Stock Option Pricer</a
-            >
-          </dt>
-          <dd>
-            <p>
-              Rust/Webassembly port of a Black-Scholes pricer for stock options
-              and other financial instruments. Able to leverage SIMD to
-              accelerate calculation in some modern browsers.
-            </p>
-          </dd>
-        </dl>
-      </section>
-
-      <!-- EDUCATION -->
-      <section class="resume-section education">
-        <h2>Education</h2>
-        <div class="resume-event degree">
-          <span class="event-marker">
-            <time datetime="2012">2012</time>
-          </span>
-          <span class="event-details">
-            <p class="title">
-              Bachelor of Applied Science, Video Game Art and Design
-            </p>
-            <p class="subtitle school">
-              Ex'pression College of Digital Arts, Emeryville, California
-            </p>
-          </span>
-        </div>
-      </section>
+      </article>
 
       <footer class="document-footer">
-        <a
-          class="icon before github ondark fork-on-github"
-          href="https://github.com/ironblock/resume"
-          role="button"
-        >
-          Fork this resume on GitHub
-        </a>
+        <ul class="contact-info">
+          <li class="icon ondark twitter before">
+            <a href="https://twitter.com/corey">@corey</a>
+          </li>
+          <li class="icon ondark github before">
+            <a href="https://github.com/ironblock">ironblock</a>
+          </li>
+          <li>
+            <a
+              class="icon before github ondark fork-on-github"
+              href="https://github.com/ironblock/resume"
+              role="button"
+            >
+              Fork this resume on GitHub
+            </a>
+          </li>
+        </ul>
       </footer>
     </main>
   </body>
