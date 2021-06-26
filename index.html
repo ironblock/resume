@@ -21,9 +21,26 @@
     declarations, as well as changing their appearance with CSS
   - Options for speedy development with Handlebars or an equivalent templating
     engine
- -->
+  -->
 
   <head>
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=IBM+Plex+Sans:wght@300&family=IBM+Plex+Serif:wght@300&display=swap" rel="stylesheet">
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+    <!-- TEMPORARY FONT TRIAL -->
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Corey Vixie - Resume</title>
@@ -33,7 +50,7 @@
     />
 
     <!-- CSS RESET -->
-    <style id="RESET">
+    <style>
       * {
         box-sizing: border-box;
       }
@@ -438,7 +455,7 @@
     </style>
 
     <!-- EMBEDDED FONTS -->
-    <style id="FONTS">
+    <style>
       /* TEXT STYLES */
       .all-caps {
         text-transform: uppercase;
@@ -470,7 +487,7 @@
     </style>
 
     <!-- EMBEDDED SVG ICONS -->
-    <style id="ICONS">
+    <style>
       /*
         HOW TO USE ICON:
         The various icons are embedded here as an SVG. Their aspect ratios are
@@ -638,8 +655,9 @@
     <style>
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
       body {
-        font-family: "Lato Latin (Embedded)", Helvetica, sans-serif;
-        font-weight: 400;
+        font-family: "IBM Plex Sans";
+        /* font-family: "Lato Latin (Embedded)", Helvetica, sans-serif; */
+        /* font-weight: 400; */
         display: flex;
         justify-content: center;
         font-size: 12px;
@@ -647,6 +665,9 @@
         background: white;
       }
 
+      h1,h2,h3,h4,h5,h6 {
+        font-family: "IBM Plex Mono";
+      }
       h2 {
         margin-bottom: 0.5rem;
       }
@@ -705,14 +726,12 @@
       .document-header .subtitle {
         display: inline-block;
         margin-bottom: 0.75em;
-        font-size: 1rem;
         vertical-align: middle;
       }
 
       .contact-info {
         margin: 0;
         padding: 0.3rem 1.5rem;
-        font-size: 0.8rem;
         display: flex;
         align-items: flex-start;
         justify-content: space-evenly;
@@ -738,16 +757,6 @@
         margin-right: 0.5em;
       }
 
-      .document .title {
-        font-weight: 800;
-        font-size: 1.025rem;
-      }
-
-      .document .subtitle {
-        color: #444444;
-        font-size: 0.825rem;
-      }
-
       .document-footer {
         background: #333;
         padding: 0.5rem;
@@ -767,11 +776,7 @@
       }
 
       .projects {
-        display: flex;
-        flex-flow: column nowrap;
         margin: 1rem 0.5rem 1.75rem 1.5rem;
-        position: relative;
-        font-size: 0.9rem;
       }
 
       .projects .title {
@@ -840,7 +845,6 @@
         margin: 0.4rem 0.5rem 0.15rem;
         text-decoration: none;
         list-style: none;
-        color: #888888;
         text-transform: uppercase;
         font-size: 0.65rem;
         text-align: center;
@@ -977,7 +981,6 @@
       @media screen and (min-width: 900px) {
         body {
           background: #e5e5e5;
-          font-size: 16px;
         }
 
         .document {
@@ -1073,15 +1076,24 @@
           >JavaScript application architect, 3D artist, team leader</span
         >
         <ul class="contact-info">
-          <li>
+          <li class="icon ondark twitter before">
+            <a href="https://twitter.com/corey">@corey</a>
+          </li>
+          <li class="icon ondark github before">
+            <a href="https://github.com/ironblock">ironblock</a>
+          </li>
+          <li class="icon ondark letter before">
             <a href="mailto:corey@vixie.enterprises">corey@vixie.enterprises</a>
           </li>
-          <li><a href="tel:16507733158">+1 (650) 773 - 3158</a></li>
+          <li class="icon ondark phone before">
+            <a href="tel:16507733158">(650) 773 - 3158</a>
+          </li>
         </ul>
       </header>
 
       <!-- SUMMARY -->
       <aside>
+        <h3>Languages / Platforms</h3>
         <ul class="technologies">
           <!-- Languages / Platforms -->
           <li class="icon js before">JavaScript</li>
@@ -1089,20 +1101,29 @@
           <li class="icon node before">Node.js</li>
           <li class="icon shell before">Shell</li>
           <li class="icon rust before">Rust</li>
+        </ul>
 
+        <h3>Libraries / Frameworks</h3>
+        <ul class="technologies">
           <!-- Major Libraries -->
           <li class="icon react before">React</li>
           <li class="icon redux before">Redux</li>
           <li class="icon redux before">Next.js</li>
           <li class="icon webpack before">Webpack</li>
+          <li class="icon zbrush before">THREE.js</li>
+          <li class="icon zbrush before">Babylon.js</li>
+        </ul>
+
+        <h3>Design / Render</h3>
+        <ul class="technologies">
 
           <!-- Design Tools -->
           <li class="icon maya before">Unreal</li>
           <li class="icon maya before">Maya</li>
-          <li class="icon zbrush before">Babylon.js</li>
           <li class="icon photoshop before">Photoshop</li>
           <li class="icon illustrator before">Illustrator</li>
           <li class="icon aftereffects before">AfterEffects</li>
+          <li class="icon zbrush before">Fusion 360</li>
         </ul>
 
         <!-- OPEN SOURCE -->
@@ -1349,23 +1370,13 @@
       </article>
 
       <footer class="document-footer">
-        <ul class="contact-info">
-          <li class="icon ondark twitter before">
-            <a href="https://twitter.com/corey">@corey</a>
-          </li>
-          <li class="icon ondark github before">
-            <a href="https://github.com/ironblock">ironblock</a>
-          </li>
-          <li>
-            <a
-              class="icon before github ondark fork-on-github"
-              href="https://github.com/ironblock/resume"
-              role="button"
-            >
-              Fork this resume on GitHub
-            </a>
-          </li>
-        </ul>
+        <a
+          class="icon before github-official ondark fork-on-github"
+          href="https://github.com/ironblock/resume"
+          role="button"
+        >
+          Fork this resume on GitHub
+        </a>
       </footer>
     </main>
   </body>
