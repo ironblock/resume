@@ -958,9 +958,7 @@
       .event-details time,
       .event-details .tag::after,
       .event-details .employer {
-        line-height: 1rem;
         display: inline;
-        vertical-align: middle;
         margin-top: 0;
         margin-bottom: 0;
       }
@@ -1006,10 +1004,23 @@
         margin: 0 0 0.5em;
       }
 
-      footer {
-        border-top-width: var(--border-width);
-        padding: 0.5rem;
-        text-align: center;
+      /* EDUCATION */
+      .degree {
+        display: flex; 
+        flex-flow: row wrap;
+      }
+
+      .degree .title {
+        /* font-family: "IBM Plex Mono"; */
+        /* font-weight: bold; */
+        /* font-size: 0.8rem; */
+        flex: 0 0 100%;
+      }
+
+      .degree .school {
+        border-left: 1px solid;
+        padding-left: 1em;
+        margin-left: 1em;
       }
 
       .fork-on-github {
@@ -1184,8 +1195,7 @@
             </dt>
             <dd>
               <p>
-                Library to automatically set up strongly typed Redux "loops"
-                (constants, actions, sagas, reducer) given a simple map of API
+                Library to create TypeScript compatible boilerplate for Redux and Redux-Saga, given a simple map of API
                 calls.
               </p>
             </dd>
@@ -1197,9 +1207,9 @@
             </dt>
             <dd>
               <p>
-                Rust/Webassembly port of a Black-Scholes pricer for stock
-                options and other financial instruments. Able to leverage SIMD
-                to accelerate calculation in some modern browsers.
+                WASM port of a Black-Scholes option pricer for American-style
+                options and other financial instruments. Uses SIMD
+                acceleration in some modern browsers.
               </p>
             </dd>
 
@@ -1210,9 +1220,7 @@
             </dt>
             <dd>
               <p>
-                Rust/Webassembly port of a Black-Scholes pricer for stock
-                options and other financial instruments. Able to leverage SIMD
-                to accelerate calculation in some modern browsers.
+                SPI driver for the Sitronix ST7701S LCD controller, written in Rust. Able to issue all commands present in the datasheet.
               </p>
             </dd>
           </dl>
@@ -1221,21 +1229,20 @@
         <!-- EDUCATION -->
         <section class="education">
           <h3>Education</h3>
-          <div class="resume-event degree">
-            <span class="">
+          <div class="degree">
+              <span class="title">
+                Bachelor of Applied Science
+                </span>
+                <span class="title">Video Game Art and Design
+              </span>
               <time datetime="2012">2012</time>
-            </span>
-            <span class="event-details">
-              <p class="title">
-                Bachelor of Applied Science, Video Game Art and Design
-              </p>
-              <p class="subtitle school">
-                Ex'pression College of Digital Arts, Emeryville, California
-              </p>
-            </span>
+              <span class="school">
+                SAE Ex'pression College
+              </span>
           </div>
         </section>
 
+        <!-- FORK BUTTON -->
         <a
           class="icon before github-official fork-on-github"
           href="https://github.com/ironblock/resume"
