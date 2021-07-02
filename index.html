@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=IBM+Plex+Sans:wght@300&family=IBM+Plex+Serif:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300&family=IBM+Plex+Serif:wght@300&display=swap"
       rel="stylesheet"
     />
     <!-- TEMPORARY FONT TRIAL -->
@@ -459,20 +459,6 @@
 
     <!-- EMBEDDED FONTS -->
     <style>
-      /* TEXT STYLES */
-      .all-caps {
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-
-      /* This is ugly, but the alternative is embedding another font weight */
-      .synth-bold {
-        text-shadow: 0.015em 0, -0.015em 0 0.0001em rgba(0, 0, 0, 0.1),
-          0 0.015em, 0 -0.015em 0.0001em rgba(0, 0, 0, 0.1);
-        letter-spacing: 0.015em;
-        -webkit-text-stroke: 0.015em;
-      }
-
       /* Lato | Łukasz Dziedzic | Open Font License */
       @font-face {
         font-family: "Lato Latin (Embedded)";
@@ -682,8 +668,53 @@
       }
     </style>
 
+    <!-- UTILITY STYLES -->
+    <style>
+      .all-caps {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      /* This is ugly, but the alternative is embedding another font weight */
+      .synth-bold {
+        text-shadow: 0.015em 0, -0.015em 0 0.0001em rgba(0, 0, 0, 0.1),
+          0 0.015em, 0 -0.015em 0.0001em rgba(0, 0, 0, 0.1);
+        letter-spacing: 0.015em;
+        -webkit-text-stroke: 0.015em;
+      }
+    </style>
+
     <!-- CUSTOM PAGE STYLES -->
     <style>
+      /* TAG PSEUDOELEMENTS */
+      .tag::before,
+      .tag::after {
+        text-transform: uppercase;
+        display: inline-block;
+        border: 1px solid;
+        padding: 0.25rem 0.25rem 0.15rem;
+        border-radius: 0.25rem;
+        font-size: 0.45rem;
+        font-weight: normal;
+        margin-right: 0.5rem;
+        color: #666;
+        vertical-align: middle;
+      }
+
+      .tag.webapp::before {
+        content: "webapp";
+      }
+
+      .tag.library::before {
+        content: "library";
+      }
+
+      .tag.remote::after {
+        content: "remote";
+        background: #888888;
+        color: white;
+      }
+
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
       body {
         font-family: "IBM Plex Sans";
@@ -703,6 +734,7 @@
       h5,
       h6 {
         font-family: "IBM Plex Mono";
+        font-weight: 400;
       }
       h2 {
         margin-bottom: 0.5rem;
@@ -727,39 +759,39 @@
       main {
         display: flex;
         flex-flow: row wrap;
-      }
-
-      main header,
-      main footer {
-        flex: 0 0 100%;
-      }
-
-      main aside {
-        flex: 0 0 30%;
-      }
-
-      main article {
-        flex: 1;
-      }
-
-      .document {
         flex: 1;
         max-width: 8.5in;
         min-height: 11in;
         padding: 1.25rem 3.5rem 3rem;
       }
 
-      .document-header {
+      header,
+      footer {
+        flex: 0 0 100%;
+      }
+
+      aside {
+        flex: 0 0 30%;
+        padding-right: 1rem;
+      }
+
+      article {
+        flex: 1;
+        border-left: 4px solid #eee;
+        padding-left: 2rem;
+      }
+
+      header {
         position: relative;
       }
 
-      .document-header h1 {
+      header h1 {
         font-weight: 800;
         margin: 1em 0.5em 0.25em;
         display: inline-block;
       }
 
-      .document-header .subtitle {
+      header .subtitle {
         display: inline-block;
         margin-bottom: 0.75em;
         vertical-align: middle;
@@ -793,81 +825,6 @@
         margin-right: 0.5em;
       }
 
-      .document-footer {
-        background: #333;
-        padding: 0.5rem;
-        text-align: center;
-      }
-
-      .fork-on-github {
-        flex-flow: row;
-        padding: 0.55em 0.8em;
-        border-radius: 0.15em;
-        background-color: #3e3e3e;
-        font-size: 0.85rem;
-      }
-
-      .fork-on-github::before {
-        margin-right: 0.5em;
-      }
-
-      .projects {
-        margin: 1rem 0.5rem 1.75rem 1.5rem;
-      }
-
-      .projects .title {
-        font-size: inherit;
-        margin: 0;
-      }
-
-      .projects p {
-        margin: 0;
-      }
-
-      .projects dt,
-      .projects dd {
-        margin-bottom: 0.75rem;
-      }
-
-      .projects dt {
-        display: inline-flex;
-        flex-flow: row nowrap;
-        flex: 1 1 100%;
-      }
-
-      .projects dd {
-        flex: 1 1 100%;
-        margin: 0.25rem 0 1rem;
-      }
-
-      .tag::before,
-      .tag::after {
-        text-transform: uppercase;
-        display: inline-block;
-        border: 1px solid;
-        padding: 0.25rem 0.25rem 0.15rem;
-        border-radius: 0.25rem;
-        font-size: 0.5rem;
-        font-weight: normal;
-        margin-right: 0.5rem;
-        color: #666;
-        vertical-align: middle;
-      }
-
-      .tag.webapp::before {
-        content: "webapp";
-      }
-
-      .tag.library::before {
-        content: "library";
-      }
-
-      .tag.remote::after {
-        content: "remote";
-        background: #888888;
-        color: white;
-      }
-
       .technologies {
         display: flex;
         flex-flow: row wrap;
@@ -877,14 +834,12 @@
       }
 
       .technologies .icon {
-        flex: 1;
+        flex: 1 0 auto;
         margin: 0.4rem 0.5rem 0.15rem;
-        text-decoration: none;
         list-style: none;
-        text-transform: uppercase;
         font-size: 0.65rem;
-        text-align: center;
         justify-content: flex-start;
+        display: inline-block;
       }
 
       .technologies .icon::before,
@@ -895,7 +850,7 @@
 
       @media screen and (min-width: 900px) {
         .technologies .icon {
-          flex: 1 0 15%;
+          flex: 1 0 40%;
           flex-flow: row nowrap;
         }
 
@@ -916,39 +871,22 @@
         }
       }
 
-      /* EVENTS */
-      .work-experience {
-        padding-left: var(--train-stop-offset);
-        border-left: 4px solid #eee;
-      }
-
-      .job-description,
-      .projects {
-        margin-left: 0;
-      }
-
-      .job-description .projects {
-        margin-left: 4rem;
-      }
-
+      /* WORK EXPERIENCE */
       .resume-event {
         margin-bottom: 1rem;
         position: relative;
       }
 
-      .event-marker {
-        display: flex;
-        justify-content: end;
-        align-items: center;
-        font-size: 0.85em;
+      .job-title {
+        font-size: 1.125em;
       }
 
-      .event-marker time {
+      .event-details time {
         font-weight: normal;
         font-style: normal;
       }
 
-      .event-marker time + time::before {
+      .event-details time + time::before {
         content: " - ";
         white-space: pre;
       }
@@ -959,37 +897,60 @@
         align-items: center;
       }
 
-      .event-details .tag.remote::after {
-        margin: 0 0 0 1em;
-      }
-
-      .event-details .job-title::before {
-        content: "";
-
-        /* box-sizing: content-box;
-        height: 0.5rem;
-        width: 0.5rem;
-        display: block;
-        border-radius: 50%;
-        border: 4px solid #ddd;
-        position: absolute;
-        background: white;
-        top: 0;
-        left: calc(var(--train-stop-offset) * -1.5);
-        padding: 0;
-        margin: -2px 0 0 -2px; */
-      }
-
-      .event-details .job-title,
+      .event-details time,
+      .event-details .tag::after,
       .event-details .employer {
-        display: inline-block;
+        line-height: 1rem;
+        display: inline;
+        vertical-align: middle;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .event-details .tag::after {
+        margin: 0 0 0 1em;
       }
 
       .event-details .employer {
         border-left: 1px solid;
         padding-left: 1em;
         margin-left: 1em;
-        font-size: 0.825em;
+      }
+
+      .work-experience .projects {
+        margin-left: 3rem;
+        position: relative;
+        margin-bottom: 2em;
+      }
+
+      .work-experience .projects .title {
+        font-family: "IBM Plex Mono";
+        font-weight: 400;
+        color: #333
+      }
+
+      .work-experience .projects .tag::before,
+      .work-experience .projects .tag::after {
+        position: absolute;
+        right: 100%
+      }
+
+      footer {
+        background: #333;
+        padding: 0.5rem;
+        text-align: center;
+      }
+
+      .fork-on-github {
+        flex-flow: row;
+        padding: 0.55em 0.8em;
+        border-radius: 0.15em;
+        background-color: #3e3e3e;
+        font-size: 0.85rem;
+      }
+
+      .fork-on-github::before {
+        margin-right: 0.5em;
       }
     </style>
 
@@ -1006,7 +967,7 @@
 
       /* Small Devices Only */
       @media screen and (max-width: 600px) {
-        .document {
+        main {
           margin: 1rem 0.5rem;
           background: white;
           box-shadow: 0.3rem 0.3rem 2rem 0.4rem rgba(0, 0, 0, 0.07);
@@ -1019,7 +980,7 @@
           background: #e5e5e5;
         }
 
-        .document {
+        main {
           margin: 2rem 0;
           background: white;
           box-shadow: 0.3rem 0.3rem 2rem 0.4rem rgba(0, 0, 0, 0.07);
@@ -1105,8 +1066,8 @@
 
   <body>
     <!-- DOCUMENT START -->
-    <main class="document" role="main">
-      <header class="document-header">
+    <main role="document">
+      <header role="heading">
         <h1>Corey Vixie</h1>
         <span class="subtitle"
           >JavaScript application architect, 3D artist, team leader</span
@@ -1228,39 +1189,49 @@
 
       <!-- WORK EXPERIENCE -->
       <article class="experience">
-        <h2>Experience</h2>
         <dl class="work-experience">
           <!-- AURAL ANALYTICS -->
           <dt class="resume-event">
+            <h2 class="job-title">Web Team Lead, Architect</h2>
             <span class="event-details">
-              <strong class="job-title">Web Application Architect</strong>
+              <time datetime="2019">2019</time><time>Today</time>
               <span class="employer tag remote">
                 <a href="https://auralanalytics.com">Aural Analytics</a>
               </span>
             </span>
-            <span class="event-marker">
-              <time datetime="2019">2019</time><time>Today</time>
-            </span>
           </dt>
           <dd>
             <p class="job-description">
-              First web developer for this medical startup. Created and
-              maintained a growing suite of partner tools and customer-facing
-              web apps to facilitate collection of participant speech data while
-              maintaing strict HIPAA compliance.
+              First web developer for this medical startup. Bootstrapped a suite
+              of tools and products while growing a small team of developers.
             </p>
 
             <dl class="projects">
               <dt class="title tag webapp">
-                White-Label Speech Collection PWA
+                Patient Speech Collection, Progressive Web App
               </dt>
               <dd>
                 <p>
-                  Progressive Web App (PWA framework using web audio APIs to
-                  collect participant speech. Used in crowdsourcing data,
-                  installation on managed Windows devices, and rapid deployment
-                  of new services to assist partners during the COVID-19
-                  pandemic.
+                  Offline-first PWA installed on managed partner devices as a
+                  Windows 10 UWP app.
+                </p>
+              </dd>
+              <dt class="title tag webapp">
+                Crowdsourced Speech Norming Data Collection
+              </dt>
+              <dd>
+                <p>
+                  Flexible, simple app for use with services like Amazon
+                  Mechanical Turk.
+                </p>
+              </dd>
+              <dt class="title tag webapp">
+                "Touchless" Forced Vital Capacity Testing App
+              </dt>
+              <dd>
+                <p>
+                  Innovative replacement for in-clinic spirometry tests during
+                  the COVID-19 Pandemic.
                 </p>
               </dd>
             </dl>
@@ -1268,17 +1239,15 @@
 
           <!-- BLUECREW -->
           <dt class="resume-event">
+            <h2 class="job-title">Web Team Lead, Architect</h2>
             <span class="event-details">
-              <strong class="job-title">Web Team Lead, Architect</strong>
+              <time datetime="2018">2018</time><time datetime="2019">2019</time>
               <span class="employer tag remote">
                 <a href="https://bluecrewjobs.com">Bluecrew</a> (<a
                   href="https://iac.com"
                   >IAC</a
                 >)
               </span>
-            </span>
-            <span class="event-marker">
-              <time datetime="2018">2018</time><time datetime="2019">2019</time>
             </span>
           </dt>
           <dd>
@@ -1304,14 +1273,12 @@
 
           <!-- TRŌV -->
           <dt class="resume-event">
+            <h2 class="job-title">Web Team Lead, Architect</h2>
             <span class="event-details">
-              <strong class="job-title">Web Team Lead, Architect</strong>
+              <time datetime="2016">2016</time><time datetime="2018">2018</time>
               <span class="employer tag remote">
                 <a href="https://Trōv.com">Trōv</a>
               </span>
-            </span>
-            <span class="event-marker">
-              <time datetime="2016">2016</time><time datetime="2018">2018</time>
             </span>
           </dt>
           <dd>
@@ -1337,14 +1304,12 @@
 
           <!-- IXSYSTEMS -->
           <dt class="resume-event">
+            <h2 class="job-title">Senior Web Developer</h2>
             <span class="event-details">
-              <strong class="job-title">Senior Web Developer</strong>
+              <time datetime="2014">2014</time><time datetime="2015">2015</time>
               <span class="employer">
                 <a href="https://ixsystems.com">iXsystems</a>
               </span>
-            </span>
-            <span class="event-marker">
-              <time datetime="2014">2014</time><time datetime="2015">2015</time>
             </span>
           </dt>
           <dd>
@@ -1370,14 +1335,12 @@
 
           <!-- NAMedia -->
           <dt class="resume-event">
+            <h2 class="job-title">Web Developer, Lead Designer</h2>
             <span class="event-details">
-              <strong class="job-title">Web Developer, Lead Designer</strong>
+              <time datetime="2011">2011</time><time datetime="2014">2014</time>
               <span class="employer">
                 <a href="https://uniregistry.com">Uniregistry</a>
               </span>
-            </span>
-            <span class="event-marker">
-              <time datetime="2011">2011</time><time datetime="2014">2014</time>
             </span>
           </dt>
           <dd>
@@ -1405,7 +1368,7 @@
         </dl>
       </article>
 
-      <footer class="document-footer">
+      <footer>
         <a
           class="icon before github-official ondark fork-on-github"
           href="https://github.com/ironblock/resume"
