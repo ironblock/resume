@@ -734,8 +734,8 @@
       h5,
       h6 {
         font-family: "IBM Plex Mono";
-        font-weight: 400;
       }
+
       h2 {
         margin-bottom: 0.5rem;
       }
@@ -873,7 +873,7 @@
 
       /* WORK EXPERIENCE */
       .resume-event {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5em;
         position: relative;
       }
 
@@ -917,22 +917,27 @@
         margin-left: 1em;
       }
 
+      /* PROJECTS */
       .work-experience .projects {
-        margin-left: 3rem;
+        margin-left: 2.75rem;
         position: relative;
         margin-bottom: 2em;
+        font-size: 0.9em;
       }
 
       .work-experience .projects .title {
         font-family: "IBM Plex Mono";
-        font-weight: 400;
-        color: #333
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.15em;
       }
 
       .work-experience .projects .tag::before,
       .work-experience .projects .tag::after {
         position: absolute;
-        right: 100%
+        right: 100%;
+        margin-top: -0.3em;
+        line-height: 1em;
       }
 
       footer {
@@ -1217,7 +1222,7 @@
                 </p>
               </dd>
               <dt class="title tag webapp">
-                Crowdsourced Speech Norming Data Collection
+                Crowdsourced Speech Norming Data Collection App
               </dt>
               <dd>
                 <p>
@@ -1252,20 +1257,18 @@
           </dt>
           <dd>
             <p class="job-description">
-              Refactored and modernized BlueCrew's legacy Angular.js application
-              into a modern React stack. Provided architectural oversight and
-              designed a scalable platform for this startup's future growth.
-              Assisted in recruting and hiring developers to fill out a second
-              team in Chicago.
+              Refactored legacy code and designed a scalable platform for this
+              startup's post-acquisition growth. Hired developers to start a
+              second web team.
             </p>
 
             <dl class="projects">
               <dt class="title tag webapp">Internal Tools Portal</dt>
               <dd>
                 <p>
-                  Lerna monorepo for BlueCrew's tools, architected to allow a
-                  single design system and shared component library between
-                  "internal-only" and B2B tools with simplified deployment.
+                  Refactored legacy Angular app, extended to Lerna monorepo
+                  allowing a single design system and shared component library
+                  between "internal" and B2B tools.
                 </p>
               </dd>
             </dl>
@@ -1283,20 +1286,22 @@
           </dt>
           <dd>
             <p class="job-description">
-              Architected Trōv's web platform. Hired developers to establish
-              Trōv's web team. Converted Trōv's existing mobile apps into
-              webapps, increasing new customer conversions by two orders of
-              magnitude. Refactored and consolidated internal tools to service
-              partner needs.
+              First web developer at this startup. Hired and managed a team of web developers.
             </p>
 
             <dl class="projects">
-              <dt class="title tag webapp">On-Demand Insurance App</dt>
+              <dt class="title tag webapp">"On-Demand Micro Insurance" App</dt>
               <dd>
                 <p>
-                  Converted "micro insurance" app from reference mobile apps.
-                  Lowered cost of new customer acquisition and integrated a
+                  Created based on reference iOS/Android apps.
+                  Lowered cost of customer acquisition, increased conversions 10x and integrated a
                   third-party tool to reduce fraud.
+                </p>
+              </dd>
+              <dt class="title tag webapp">Internal Tools App Suite</dt>
+              <dd>
+                <p>
+                  Created a collection of extensible "micro-apps" for internal and partner use.
                 </p>
               </dd>
             </dl>
@@ -1314,20 +1319,17 @@
           </dt>
           <dd>
             <p class="job-description">
-              Led web team to develop the management GUI for an open source
-              Network Attached Storage OS. Co-designed a WebSocket protocol
-              based on the <a href="https://wamp-proto.org/">WAMP standard</a>.
-              Implemented Webpack-over-rsync for live development against real
+              Co-designed a WebSocket RPC
+              based on <a href="https://wamp-proto.org/">WAMP</a>.
+              Created "Webpack over rsync" for live development against embedded
               hardware. Designed UI, branding, animations.
             </p>
             <dl class="projects">
-              <dt class="title tag webapp">FreeNAS 10 Management Web GUI</dt>
+              <dt class="title tag webapp">FreeNAS 10 Management App</dt>
               <dd>
                 <p>
-                  Architected concurrent multiuser management webapp for NAS
-                  appliances. Built GUI to simplify complex administration
-                  tasks: topology for ZFS pools, file sharing, scheduled
-                  maintenance, etc.
+                  Architected concurrent multiuser webapp for storage
+                  appliances. GUI managed ZFS pool topology, users and permissions, file sharing, FreeBSD Jails, and more.
                 </p>
               </dd>
             </dl>
@@ -1345,22 +1347,26 @@
           </dt>
           <dd>
             <p class="job-description">
-              Redesigned and modernized
-              <a href="https://domainnamesales.com/">domainnamesales.com</a>.
-              Designed and built customer-facing version of
-              <a href="https://uniregistry.com">uniregistry.com</a>. Designed
-              and A/B tested domain parking landers to maximize revenue and
-              conversions. Built the domain transfer functionality for the
-              Uniregistry management webapp.
+              Responsible for overall web design for this startup. Co-developed REST APIs.
             </p>
 
             <dl class="projects">
-              <dt class="title tag webapp">Domain Name Portfolio Management</dt>
+              <dt class="title tag webapp">Domain Name Portfolio Management App</dt>
               <dd>
                 <p>
-                  Maintained and updated branding guidelines for entire
-                  application. Designed REST API for domain name transfers.
-                  Designed, implemented, and tested domain name transfer UI.
+                  Designed and built tools to search for, purchase, manage, transfer domain names.
+                </p>
+              </dd>
+              <dt class="title tag webapp">uniregistry.com</dt>
+              <dd>
+                <p>
+                  Designed and built customer-facing marketing website, landers for "NIC" pages.
+                </p>
+              </dd>
+              <dt class="title tag webapp">DomainNameSales.com</dt>
+              <dd>
+                <p>
+                  Redesigned website, "Buy this domain" landing pages, and A/B tested "parking" pages.
                 </p>
               </dd>
             </dl>
