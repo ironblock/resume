@@ -699,6 +699,7 @@
         margin-right: 0.5rem;
         color: #666;
         vertical-align: middle;
+        line-height: inherit;
       }
 
       .tag.webapp::before {
@@ -711,8 +712,6 @@
 
       .tag.remote::after {
         content: "remote";
-        background: #888888;
-        color: white;
       }
 
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
@@ -775,6 +774,12 @@
         padding-right: 1rem;
       }
 
+      article, header {
+        border-style: solid;
+        border-color: #eee;
+        border-width: 0;
+      }
+
       article {
         flex: 1;
         border-left: 4px solid #eee;
@@ -782,33 +787,44 @@
       }
 
       header {
-        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        margin-top: 1em;
+        padding-bottom: 1em;
+        border-bottom: 4px solid #eee; 
       }
 
+      header .title {
+        flex: 1 0 auto;
+      }
+      
       header h1 {
+        display: block;
         font-weight: 800;
-        margin: 1em 0.5em 0.25em;
-        display: inline-block;
+        margin: 0 0 0.15em 0;
       }
 
       header .subtitle {
-        display: inline-block;
-        margin-bottom: 0.75em;
-        vertical-align: middle;
+        display: block;
       }
 
+      /* CONTACT INFORMATION */
       .contact-info {
-        margin: 0;
-        padding: 0.3rem 1.5rem;
         display: flex;
         align-items: flex-start;
-        justify-content: space-evenly;
-        flex-flow: column;
+        justify-content: space-between;
+        flex: 1 1 35%;
+        padding-inline-start: 0;
+        margin: 0;
       }
 
       .contact-info li {
+        margin-top: 0.35em;
+        flex: 1 0 33%;
         list-style: none;
-        margin: 0.1rem 0;
+        padding: 0.15em 0.75em;
+        flex-flow: row;
+        justify-content: flex-start;
       }
 
       .contact-info a {
@@ -816,15 +832,20 @@
         color: inherit;
       }
 
-      .contact-info .icon {
-        flex-flow: row;
-      }
-
       .contact-info .icon::before {
-        filter: grayscale(1) brightness(100);
         margin-right: 0.5em;
       }
 
+      /* Tablet (Portrait) and Larger */
+      @media screen and (min-width: 900px) {
+        .contact-info {
+          flex-flow: row wrap;
+          justify-content: flex-start;
+          align-content: flex-start;
+        }
+      }
+
+      /* TECHNOLOGIES AND SOFTWARE */
       .technologies {
         display: flex;
         flex-flow: row wrap;
@@ -879,6 +900,7 @@
 
       .job-title {
         font-size: 1.125em;
+        margin-bottom: 0.25em;
       }
 
       .event-details time {
@@ -919,25 +941,29 @@
 
       /* PROJECTS */
       .work-experience .projects {
-        margin-left: 2.75rem;
+        margin-left: 1.5rem;
         position: relative;
-        margin-bottom: 2em;
+        margin-bottom: 3em;
         font-size: 0.9em;
+      }
+
+      .work-experience .job-description {
+        margin: 0;
       }
 
       .work-experience .projects .title {
         font-family: "IBM Plex Mono";
         font-weight: bold;
         color: #333;
-        margin-bottom: 0.15em;
+        margin-bottom: 0.1em;
       }
 
-      .work-experience .projects .tag::before,
-      .work-experience .projects .tag::after {
-        position: absolute;
-        right: 100%;
-        margin-top: -0.3em;
-        line-height: 1em;
+      .work-experience .projects dd {
+        margin: 0;
+      }
+
+      .work-experience .projects p {
+        margin: 0 0 0.5em;
       }
 
       footer {
@@ -959,7 +985,7 @@
       }
     </style>
 
-    <!-- RESPONSIVE -->
+    <!-- RESPONSIVE CONTAINER -->
     <style>
       /**
        * BREAKPOINTS
@@ -989,13 +1015,6 @@
           margin: 2rem 0;
           background: white;
           box-shadow: 0.3rem 0.3rem 2rem 0.4rem rgba(0, 0, 0, 0.07);
-        }
-
-        .contact-info {
-          padding: 0.6rem 0;
-          align-items: center;
-          justify-content: space-evenly;
-          flex-flow: row;
         }
       }
     </style>
@@ -1073,22 +1092,24 @@
     <!-- DOCUMENT START -->
     <main role="document">
       <header role="heading">
-        <h1>Corey Vixie</h1>
-        <span class="subtitle"
-          >JavaScript application architect, 3D artist, team leader</span
-        >
+        <span class="title">
+          <h1>Corey Vixie</h1>
+          <span class="subtitle"
+            >JavaScript application architect, 3D artist, team leader</span
+          >
+        </span>
         <ul class="contact-info">
-          <li class="icon ondark twitter before">
-            <a href="https://twitter.com/corey">@corey</a>
-          </li>
-          <li class="icon ondark github before">
-            <a href="https://github.com/ironblock">ironblock</a>
-          </li>
           <li class="icon ondark letter before">
             <a href="mailto:corey@vixie.enterprises">corey@vixie.enterprises</a>
           </li>
           <li class="icon ondark phone before">
-            <a href="tel:16507733158">(650) 773 - 3158</a>
+            <a href="tel:16507733158">(650) 773-3158</a>
+          </li>
+          <li class="icon ondark github before">
+            <a href="https://github.com/ironblock">ironblock</a>
+          </li>
+          <li class="icon ondark twitter before">
+            <a href="https://twitter.com/corey">@corey</a>
           </li>
         </ul>
       </header>
@@ -1212,7 +1233,7 @@
             </p>
 
             <dl class="projects">
-              <dt class="title tag webapp">
+              <dt class="title">
                 Patient Speech Collection, Progressive Web App
               </dt>
               <dd>
@@ -1221,7 +1242,7 @@
                   Windows 10 UWP app.
                 </p>
               </dd>
-              <dt class="title tag webapp">
+              <dt class="title">
                 Crowdsourced Speech Norming Data Collection App
               </dt>
               <dd>
@@ -1230,7 +1251,7 @@
                   Mechanical Turk.
                 </p>
               </dd>
-              <dt class="title tag webapp">
+              <dt class="title">
                 "Touchless" Forced Vital Capacity Testing App
               </dt>
               <dd>
@@ -1263,7 +1284,7 @@
             </p>
 
             <dl class="projects">
-              <dt class="title tag webapp">Internal Tools Portal</dt>
+              <dt class="title">Internal Tools Portal</dt>
               <dd>
                 <p>
                   Refactored legacy Angular app, extended to Lerna monorepo
@@ -1290,7 +1311,7 @@
             </p>
 
             <dl class="projects">
-              <dt class="title tag webapp">"On-Demand Micro Insurance" App</dt>
+              <dt class="title">"On-Demand Micro Insurance" App</dt>
               <dd>
                 <p>
                   Created based on reference iOS/Android apps.
@@ -1298,7 +1319,7 @@
                   third-party tool to reduce fraud.
                 </p>
               </dd>
-              <dt class="title tag webapp">Internal Tools App Suite</dt>
+              <dt class="title">Internal Tools App Suite</dt>
               <dd>
                 <p>
                   Created a collection of extensible "micro-apps" for internal and partner use.
@@ -1325,7 +1346,7 @@
               hardware. Designed UI, branding, animations.
             </p>
             <dl class="projects">
-              <dt class="title tag webapp">FreeNAS 10 Management App</dt>
+              <dt class="title">FreeNAS 10 Management App</dt>
               <dd>
                 <p>
                   Architected concurrent multiuser webapp for storage
@@ -1351,19 +1372,19 @@
             </p>
 
             <dl class="projects">
-              <dt class="title tag webapp">Domain Name Portfolio Management App</dt>
+              <dt class="title">Domain Name Portfolio Management App</dt>
               <dd>
                 <p>
                   Designed and built tools to search for, purchase, manage, transfer domain names.
                 </p>
               </dd>
-              <dt class="title tag webapp">uniregistry.com</dt>
+              <dt class="title">uniregistry.com</dt>
               <dd>
                 <p>
                   Designed and built customer-facing marketing website, landers for "NIC" pages.
                 </p>
               </dd>
-              <dt class="title tag webapp">DomainNameSales.com</dt>
+              <dt class="title">DomainNameSales.com</dt>
               <dd>
                 <p>
                   Redesigned website, "Buy this domain" landing pages, and A/B tested "parking" pages.
