@@ -527,6 +527,14 @@
         vertical-align: top;
       }
 
+      .icon::before {
+        margin-right: 0.5em;
+      }
+
+      .icon::after {
+        margin-left: 0.5em;
+      }
+
       /**
         The background is set on the .icon and inherited with ::before and
         ::after. background-size: 0 keeps it invisible on the element itself,
@@ -661,8 +669,8 @@
     <!-- VARIABLES -->
     <style>
       :root {
-        --aside-width: 8rem;
-        --train-stop-offset: 1.5rem;
+        --border-width: 4px;
+        --border-color: #eee;
 
         --color-primary: rgb(15, 100, 190);
       }
@@ -682,24 +690,29 @@
         letter-spacing: 0.015em;
         -webkit-text-stroke: 0.015em;
       }
-    </style>
 
-    <!-- CUSTOM PAGE STYLES -->
-    <style>
       /* TAG PSEUDOELEMENTS */
       .tag::before,
       .tag::after {
         text-transform: uppercase;
         display: inline-block;
         border: 1px solid;
-        padding: 0.25rem 0.25rem 0.15rem;
-        border-radius: 0.25rem;
+        padding: 0.15rem 0.25rem;
+        border-radius: 0.35rem;
         font-size: 0.45rem;
         font-weight: normal;
         margin-right: 0.5rem;
         color: #666;
         vertical-align: middle;
         line-height: inherit;
+      }
+
+      .tag::before {
+        margin-right: 0.5em;
+      }
+
+      .tag::after {
+        margin-left: 0.5em;
       }
 
       .tag.webapp::before {
@@ -713,7 +726,10 @@
       .tag.remote::after {
         content: "remote";
       }
+    </style>
 
+    <!-- CUSTOM PAGE STYLES -->
+    <style>
       /* PRIMARY DOCUMENT STYLES (MOBILE FIRST) */
       body {
         font-family: "IBM Plex Sans";
@@ -741,13 +757,13 @@
 
       a {
         text-decoration: none;
-        color: rgb(0, 140, 196);
+        color: var(--color-primary);
       }
 
       p {
         margin-top: 0;
         line-height: 1.25;
-        margin-bottom: 1.25em;
+        margin-bottom: 0.75rem;
       }
 
       dd,
@@ -770,28 +786,27 @@
       }
 
       aside {
-        flex: 0 0 30%;
+        flex: 0 0 32%;
         padding-right: 1rem;
       }
 
-      article, header {
+      article, header, footer {
         border-style: solid;
-        border-color: #eee;
+        border-color:var(--border-color);
         border-width: 0;
       }
 
       article {
         flex: 1;
-        border-left: 4px solid #eee;
+        border-left-width: var(--border-width);
         padding-left: 2rem;
       }
 
       header {
         display: flex;
         flex-flow: row nowrap;
-        margin-top: 1em;
         padding-bottom: 1em;
-        border-bottom: 4px solid #eee; 
+        border-bottom-width: var(--border-width);
       }
 
       header .title {
@@ -940,6 +955,10 @@
       }
 
       /* PROJECTS */
+      .work-experience:last-child {
+        margin-bottom: 0;
+      }
+
       .work-experience .projects {
         margin-left: 1.5rem;
         position: relative;
@@ -967,7 +986,7 @@
       }
 
       footer {
-        background: #333;
+        border-top-width: var(--border-width);
         padding: 0.5rem;
         text-align: center;
       }
@@ -975,13 +994,12 @@
       .fork-on-github {
         flex-flow: row;
         padding: 0.55em 0.8em;
-        border-radius: 0.15em;
-        background-color: #3e3e3e;
-        font-size: 0.85rem;
-      }
-
-      .fork-on-github::before {
-        margin-right: 0.5em;
+        border-radius: 0.35em;
+        font-size: 0.75rem;
+        background-color: #eee;
+        color: inherit;
+        box-shadow: inset 0 1px 3px -1px #ddd;
+        border: 1px solid #f1f1f1;
       }
     </style>
 
@@ -1022,22 +1040,6 @@
     <!-- PRINT / PDF STYLES -->
     <style>
       @media print {
-        /* *:not(.icon),
-      *:not(.icon):before,
-      *:not(.icon):after,
-      *:not(.icon):first-letter,
-      p:first-line,
-      div:first-line,
-      blockquote:first-line,
-      li:first-line {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none;
-        text-shadow: none !important;
-        -webkit-text-stroke: 0px !important;
-        font-weight: 400;
-      } */
-
         body {
           background: none;
         }
@@ -1090,7 +1092,7 @@
 
   <body>
     <!-- DOCUMENT START -->
-    <main role="document">
+    <main role="document" class="us-letter-constraint">
       <header role="heading">
         <span class="title">
           <h1>Corey Vixie</h1>
@@ -1397,7 +1399,7 @@
 
       <footer>
         <a
-          class="icon before github-official ondark fork-on-github"
+          class="icon before github-official fork-on-github"
           href="https://github.com/ironblock/resume"
           role="button"
         >
