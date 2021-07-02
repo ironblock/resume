@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300&family=IBM+Plex+Serif:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&family=IBM+Plex+Sans:wght@300&family=IBM+Plex+Serif:wght@300&display=swap"
       rel="stylesheet"
     />
     <!-- TEMPORARY FONT TRIAL -->
@@ -789,6 +789,12 @@
 
       main {
         display: flex;
+        flex-flow: column nowrap;
+        flex: 1;
+      }
+
+      .content-wrapper {
+        display: flex;
         flex-flow: row wrap;
         flex: 1;
       }
@@ -797,25 +803,52 @@
         padding: 0.5in 0.5in 0.75in;
         max-width: 8.5in;
         max-height: 11in;
+        height: 11in;
         overflow: hidden;
-      }
-
-      header,
-      footer {
-        flex: 0 0 100%;
-      }
-
-      aside {
-        flex: 0 0 32%;
-        padding-right: 1rem;
       }
 
       article,
       header,
-      footer {
+      aside,
+      aside hr {
         border-style: solid;
         border-color: var(--border-color);
         border-width: 0;
+      }
+
+      aside,
+      article {
+        padding-top: 1rem;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+      }
+
+      aside {
+        margin: 0;
+        flex: 0 0 32%;
+      }
+
+      aside section {
+        padding-right: 1em;
+      }
+
+      aside hr {
+        width: 100%;
+        border-bottom-width: 4px;
+      }
+
+      .attributes-title,
+      .job-title {
+        margin: 0 0 0.15em;
+      }
+
+      .attributes-title {
+        font-size: 1em;
+      }
+
+      .job-title {
+        font-size: 1.15em;
       }
 
       article {
@@ -890,6 +923,14 @@
         margin: 0;
       }
 
+      .software .attributes-title {
+        margin-top: 1.25em;
+      }
+
+      .software .attributes-title:first-child {
+        margin-top: 0;
+      }
+
       .technologies .icon {
         flex: 1 0 auto;
         margin: 0.4rem 0.5rem 0.15rem;
@@ -935,10 +976,6 @@
         position: relative;
       }
 
-      .job-title {
-        margin-bottom: 0.25em;
-      }
-
       .event-details time {
         font-weight: normal;
         font-style: normal;
@@ -974,14 +1011,20 @@
       }
 
       /* PROJECTS */
+      .work-experience {
+        flex: 1;
+        margin: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+      }
+
       .work-experience:last-child {
         margin-bottom: 0;
       }
 
       .work-experience .projects {
-        margin-left: 1.5rem;
-        position: relative;
-        margin-bottom: 3em;
+        margin: 1em 0 0 1.5em;
         font-size: 0.9em;
       }
 
@@ -1004,23 +1047,41 @@
         margin: 0 0 0.5em;
       }
 
+      /* OPEN SOURCE */
+      .open-source dt {
+        margin-bottom: 0.5em;
+      }
+
+      .open-source dd {
+        margin-bottom: 2em;
+      }
+
+      .open-source dd:last-child,
+      .open-source dd:last-child p {
+        margin-bottom: 0;
+      }
+
       /* EDUCATION */
       .degree {
-        display: flex; 
+        display: flex;
         flex-flow: row wrap;
+        align-items: center;
       }
 
-      .degree .title {
-        /* font-family: "IBM Plex Mono"; */
-        /* font-weight: bold; */
-        /* font-size: 0.8rem; */
-        flex: 0 0 100%;
+      .degree time {
+        flex: 0;
+        margin-left: 0.25em
       }
 
-      .degree .school {
+      .degree-details {
+        flex: 1;
+        margin: 1em 0 1em 1em;
         border-left: 1px solid;
         padding-left: 1em;
-        margin-left: 1em;
+      }
+
+      .github-repo {
+        display: flex;
       }
 
       .fork-on-github {
@@ -1032,7 +1093,7 @@
         color: inherit;
         box-shadow: inset 0 1px 3px -1px #ddd;
         border: 1px solid #f1f1f1;
-        margin: 0 auto;
+        margin: 2em auto 0;
       }
     </style>
 
@@ -1149,44 +1210,48 @@
         </ul>
       </header>
 
+      <span class="content-wrapper">
       <!-- SUMMARY -->
       <aside role="complementary">
-        <h3>Languages / Platforms</h3>
-        <ul class="technologies">
-          <!-- Languages / Platforms -->
-          <li class="icon js before">JavaScript</li>
-          <li class="icon typescript before">TypeScript</li>
-          <li class="icon node before">Node.js</li>
-          <li class="icon bash before">Bash (Shell)</li>
-          <li class="icon rust before">Rust</li>
-          <li class="icon shell before">Linux/BSD</li>
-        </ul>
+        <section class="software">
+          <h3 class="attributes-title">Languages / Platforms</h3>
+          <ul class="technologies">
+            <!-- Languages / Platforms -->
+            <li class="icon js before">JavaScript</li>
+            <li class="icon typescript before">TypeScript</li>
+            <li class="icon node before">Node.js</li>
+            <li class="icon bash before">Bash (Shell)</li>
+            <li class="icon rust before">Rust</li>
+            <li class="icon shell before">Linux/BSD</li>
+          </ul>
 
-        <h3>Libraries / Frameworks</h3>
-        <ul class="technologies">
-          <!-- Major Libraries -->
-          <li class="icon react before">React</li>
-          <li class="icon redux before">Redux</li>
-          <li class="icon next before">Next.js</li>
-          <li class="icon webpack before">Webpack</li>
-          <li class="icon three before">THREE.js</li>
-          <li class="icon babylon before">Babylon.js</li>
-        </ul>
+          <h3 class="attributes-title">Libraries / Frameworks</h3>
+          <ul class="technologies">
+            <!-- Major Libraries -->
+            <li class="icon react before">React</li>
+            <li class="icon redux before">Redux</li>
+            <li class="icon next before">Next.js</li>
+            <li class="icon webpack before">Webpack</li>
+            <li class="icon three before">THREE.js</li>
+            <li class="icon babylon before">Babylon.js</li>
+          </ul>
 
-        <h3>Design / Render</h3>
-        <ul class="technologies">
-          <!-- Design Tools -->
-          <li class="icon unreal before">Unreal</li>
-          <li class="icon maya before">Maya</li>
-          <li class="icon photoshop before">Photoshop</li>
-          <li class="icon illustrator before">Illustrator</li>
-          <li class="icon aftereffects before">AfterEffects</li>
-          <li class="icon fusion before">Fusion 360</li>
-        </ul>
+          <h3 class="attributes-title">Design / Render</h3>
+          <ul class="technologies">
+            <!-- Design Tools -->
+            <li class="icon unreal before">Unreal</li>
+            <li class="icon maya before">Maya</li>
+            <li class="icon photoshop before">Photoshop</li>
+            <li class="icon illustrator before">Illustrator</li>
+            <li class="icon aftereffects before">AfterEffects</li>
+            <li class="icon fusion before">Fusion 360</li>
+          </ul>
+        </section>
+        <hr />
 
         <!-- OPEN SOURCE -->
         <section class="open-source">
-          <h3>Open Source</h3>
+          <h3 class="attributes-title">Open Source</h3>
           <dl class="projects">
             <dt>
               <a href="https://github.com/ironblock/RASCL"
@@ -1195,8 +1260,8 @@
             </dt>
             <dd>
               <p>
-                Library to create TypeScript compatible boilerplate for Redux and Redux-Saga, given a simple map of API
-                calls.
+                Library to create TypeScript compatible boilerplate for Redux
+                and Redux-Saga, given a simple map of API calls.
               </p>
             </dd>
 
@@ -1208,8 +1273,8 @@
             <dd>
               <p>
                 WASM port of a Black-Scholes option pricer for American-style
-                options and other financial instruments. Uses SIMD
-                acceleration in some modern browsers.
+                options and other financial instruments. Uses SIMD acceleration
+                in some modern browsers.
               </p>
             </dd>
 
@@ -1220,226 +1285,243 @@
             </dt>
             <dd>
               <p>
-                SPI driver for the Sitronix ST7701S LCD controller, written in Rust. Able to issue all commands present in the datasheet.
+                SPI driver for the Sitronix ST7701S LCD controller, written in
+                Rust. Able to issue all commands present in the datasheet.
               </p>
             </dd>
           </dl>
         </section>
+        <hr />
 
         <!-- EDUCATION -->
         <section class="education">
-          <h3>Education</h3>
+          <h3 class="attributes-title">Education</h3>
           <div class="degree">
-              <span class="title">
-                Bachelor of Applied Science
-                </span>
-                <span class="title">Video Game Art and Design
-              </span>
-              <time datetime="2012">2012</time>
-              <span class="school">
-                SAE Ex'pression College
-              </span>
+            <time datetime="2012">2012</time>
+            <span class="degree-details"
+              >Bachelor of Applied Science<br />Video Game Art and Design<br />
+            <a href="https://usa.sae.edu/campuses/emeryville/" 
+              >SAE Ex'pression College
+            </a>
+            </span>
           </div>
         </section>
 
         <!-- FORK BUTTON -->
-        <a
-          class="icon before github-official fork-on-github"
-          href="https://github.com/ironblock/resume"
-          role="button"
-        >
-          Fork this resume on GitHub
-        </a>
+        <section class="github-repo">
+          <a
+            class="icon before github-official fork-on-github"
+            href="https://github.com/ironblock/resume"
+            role="button"
+          >
+            Fork this resume on GitHub
+          </a>
+        </section>
       </aside>
 
       <!-- WORK EXPERIENCE -->
       <article class="experience">
         <dl class="work-experience">
           <!-- AURAL ANALYTICS -->
-          <dt class="resume-event">
-            <h2 class="job-title">Web Team Lead, Architect</h2>
-            <span class="event-details">
-              <time datetime="2019">2019</time><time>Today</time>
-              <span class="employer tag remote">
-                <a href="https://auralanalytics.com">Aural Analytics</a>
+          <span>
+            <dt class="resume-event">
+              <h2 class="job-title">Web Team Lead, Architect</h2>
+              <span class="event-details">
+                <time datetime="2019">2019</time><time>Today</time>
+                <span class="employer tag remote">
+                  <a href="https://auralanalytics.com">Aural Analytics</a>
+                </span>
               </span>
-            </span>
-          </dt>
-          <dd>
-            <p class="job-description">
-              First web developer for this medical startup. Bootstrapped a suite
-              of tools and products while growing a small team of developers.
-            </p>
+            </dt>
+            <dd>
+              <p class="job-description">
+                First web developer for this medical startup. Bootstrapped a
+                suite of tools and products while growing a small team of
+                developers.
+              </p>
 
-            <dl class="projects">
-              <dt class="title">
-                Patient Speech Collection, Progressive Web App
-              </dt>
-              <dd>
-                <p>
-                  Offline-first PWA installed on managed partner devices as a
-                  Windows 10 UWP app.
-                </p>
-              </dd>
-              <dt class="title">
-                Crowdsourced Speech Norming Data Collection App
-              </dt>
-              <dd>
-                <p>
-                  Flexible, simple app for use with services like Amazon
-                  Mechanical Turk.
-                </p>
-              </dd>
-              <dt class="title">
-                "Touchless" Forced Vital Capacity Testing App
-              </dt>
-              <dd>
-                <p>
-                  Innovative replacement for in-clinic spirometry tests during
-                  the COVID-19 Pandemic.
-                </p>
-              </dd>
-            </dl>
-          </dd>
+              <dl class="projects">
+                <dt class="title">
+                  Patient Speech Collection, Progressive Web App
+                </dt>
+                <dd>
+                  <p>
+                    Offline-first PWA installed on managed partner devices as a
+                    Windows 10 UWP app.
+                  </p>
+                </dd>
+                <dt class="title">
+                  Crowdsourced Speech Norming Data Collection App
+                </dt>
+                <dd>
+                  <p>
+                    Flexible, simple app for use with services like Amazon
+                    Mechanical Turk.
+                  </p>
+                </dd>
+                <dt class="title">
+                  "Touchless" Forced Vital Capacity Testing App
+                </dt>
+                <dd>
+                  <p>
+                    Innovative replacement for in-clinic spirometry tests during
+                    the COVID-19 Pandemic.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+          </span>
 
           <!-- BLUECREW -->
-          <dt class="resume-event">
-            <h2 class="job-title">Web Team Lead, Architect</h2>
-            <span class="event-details">
-              <time datetime="2018">2018</time><time datetime="2019">2019</time>
-              <span class="employer tag remote">
-                <a href="https://bluecrewjobs.com">Bluecrew</a> (<a
-                  href="https://iac.com"
-                  >IAC</a
-                >)
+          <span>
+            <dt class="resume-event">
+              <h2 class="job-title">Web Team Lead, Architect</h2>
+              <span class="event-details">
+                <time datetime="2018">2018</time
+                ><time datetime="2019">2019</time>
+                <span class="employer tag remote">
+                  <a href="https://bluecrewjobs.com">Bluecrew</a> (<a
+                    href="https://iac.com"
+                    >IAC</a
+                  >)
+                </span>
               </span>
-            </span>
-          </dt>
-          <dd>
-            <p class="job-description">
-              Refactored legacy code and designed a scalable platform for this
-              startup's post-acquisition growth. Hired developers to start a
-              second web team.
-            </p>
+            </dt>
+            <dd>
+              <p class="job-description">
+                Refactored legacy code and designed a scalable platform for this
+                startup's post-acquisition growth. Hired developers to start a
+                second web team.
+              </p>
 
-            <dl class="projects">
-              <dt class="title">Internal Tools Portal</dt>
-              <dd>
-                <p>
-                  Refactored legacy Angular app, extended to Lerna monorepo
-                  allowing a single design system and shared component library
-                  between "internal" and B2B tools.
-                </p>
-              </dd>
-            </dl>
-          </dd>
+              <dl class="projects">
+                <dt class="title">Internal Tools Portal</dt>
+                <dd>
+                  <p>
+                    Refactored legacy Angular app, extended to Lerna monorepo
+                    allowing a single design system and shared component library
+                    between "internal" and B2B tools.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+          </span>
 
           <!-- TRŌV -->
-          <dt class="resume-event">
-            <h2 class="job-title">Web Team Lead, Architect</h2>
-            <span class="event-details">
-              <time datetime="2016">2016</time><time datetime="2018">2018</time>
-              <span class="employer tag remote">
-                <a href="https://Trōv.com">Trōv</a>
+          <span>
+            <dt class="resume-event">
+              <h2 class="job-title">Web Team Lead, Architect</h2>
+              <span class="event-details">
+                <time datetime="2016">2016</time
+                ><time datetime="2018">2018</time>
+                <span class="employer tag remote">
+                  <a href="https://Trōv.com">Trōv</a>
+                </span>
               </span>
-            </span>
-          </dt>
-          <dd>
-            <p class="job-description">
-              First web developer at this startup. Hired and managed a team of
-              web developers.
-            </p>
+            </dt>
+            <dd>
+              <p class="job-description">
+                First web developer at this startup. Hired and managed a team of
+                web developers.
+              </p>
 
-            <dl class="projects">
-              <dt class="title">"On-Demand Micro Insurance" App</dt>
-              <dd>
-                <p>
-                  Created based on reference iOS/Android apps. Lowered cost of
-                  customer acquisition, increased conversions 10x and integrated
-                  a third-party tool to reduce fraud.
-                </p>
-              </dd>
-              <dt class="title">Internal Tools App Suite</dt>
-              <dd>
-                <p>
-                  Created a collection of extensible "micro-apps" for internal
-                  and partner use.
-                </p>
-              </dd>
-            </dl>
-          </dd>
+              <dl class="projects">
+                <dt class="title">"On-Demand Micro Insurance" App</dt>
+                <dd>
+                  <p>
+                    Created based on reference iOS/Android apps. Lowered cost of
+                    customer acquisition, increased conversions 10x and
+                    integrated a third-party tool to reduce fraud.
+                  </p>
+                </dd>
+                <dt class="title">Internal Tools App Suite</dt>
+                <dd>
+                  <p>
+                    Created a collection of extensible "micro-apps" for internal
+                    and partner use.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+          </span>
 
           <!-- IXSYSTEMS -->
-          <dt class="resume-event">
-            <h2 class="job-title">Senior Web Developer</h2>
-            <span class="event-details">
-              <time datetime="2014">2014</time><time datetime="2015">2015</time>
-              <span class="employer">
-                <a href="https://ixsystems.com">iXsystems</a>
+          <span>
+            <dt class="resume-event">
+              <h2 class="job-title">Senior Web Developer</h2>
+              <span class="event-details">
+                <time datetime="2014">2014</time
+                ><time datetime="2015">2015</time>
+                <span class="employer">
+                  <a href="https://ixsystems.com">iXsystems</a>
+                </span>
               </span>
-            </span>
-          </dt>
-          <dd>
-            <p class="job-description">
-              Co-designed a WebSocket RPC based on
-              <a href="https://wamp-proto.org/">WAMP</a>. Created "Webpack over
-              rsync" for live development against embedded hardware. Designed
-              UI, branding, animations.
-            </p>
-            <dl class="projects">
-              <dt class="title">FreeNAS 10 Management App</dt>
-              <dd>
-                <p>
-                  Architected concurrent multiuser webapp for storage
-                  appliances. GUI managed ZFS pool topology, users and
-                  permissions, file sharing, FreeBSD Jails, and more.
-                </p>
-              </dd>
-            </dl>
-          </dd>
+            </dt>
+            <dd>
+              <p class="job-description">
+                Co-designed a WebSocket RPC based on
+                <a href="https://wamp-proto.org/">WAMP</a>. Created "Webpack
+                over rsync" for live development against embedded hardware.
+                Designed UI, branding, animations.
+              </p>
+              <dl class="projects">
+                <dt class="title">FreeNAS 10 Management App</dt>
+                <dd>
+                  <p>
+                    Architected concurrent multiuser webapp for storage
+                    appliances. GUI managed ZFS pool topology, users and
+                    permissions, file sharing, FreeBSD Jails, and more.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+          </span>
 
           <!-- NAMedia -->
-          <dt class="resume-event">
-            <h2 class="job-title">Web Developer, Lead Designer</h2>
-            <span class="event-details">
-              <time datetime="2011">2011</time><time datetime="2014">2014</time>
-              <span class="employer">
-                <a href="https://uniregistry.com">Uniregistry</a>
+          <span>
+            <dt class="resume-event">
+              <h2 class="job-title">Web Developer, Lead Designer</h2>
+              <span class="event-details">
+                <time datetime="2011">2011</time
+                ><time datetime="2014">2014</time>
+                <span class="employer">
+                  <a href="https://uniregistry.com">Uniregistry</a>
+                </span>
               </span>
-            </span>
-          </dt>
-          <dd>
-            <p class="job-description">
-              Responsible for overall web design for this startup. Co-developed
-              REST APIs.
-            </p>
+            </dt>
+            <dd>
+              <p class="job-description">
+                Responsible for overall web design for this startup.
+                Co-developed REST APIs.
+              </p>
 
-            <dl class="projects">
-              <dt class="title">Domain Name Portfolio Management App</dt>
-              <dd>
-                <p>
-                  Designed and built tools to search for, purchase, manage,
-                  transfer domain names.
-                </p>
-              </dd>
-              <dt class="title">uniregistry.com</dt>
-              <dd>
-                <p>
-                  Designed and built customer-facing marketing website, landers
-                  for "NIC" pages.
-                </p>
-              </dd>
-              <dt class="title">DomainNameSales.com</dt>
-              <dd>
-                <p>
-                  Redesigned website, "Buy this domain" landing pages, and A/B
-                  tested "parking" pages.
-                </p>
-              </dd>
-            </dl>
-          </dd>
+              <dl class="projects">
+                <dt class="title">Domain Name Portfolio Management App</dt>
+                <dd>
+                  <p>
+                    Designed and built tools to search for, purchase, manage,
+                    transfer domain names.
+                  </p>
+                </dd>
+                <dt class="title">uniregistry.com</dt>
+                <dd>
+                  <p>
+                    Designed and built customer-facing marketing website,
+                    landers for "NIC" pages.
+                  </p>
+                </dd>
+                <dt class="title">DomainNameSales.com</dt>
+                <dd>
+                  <p>
+                    Redesigned website, "Buy this domain" landing pages, and A/B
+                    tested "parking" pages.
+                  </p>
+                </dd>
+              </dl>
+            </dd>
+          </span>
         </dl>
       </article>
-    </main>
+    </span>
   </body>
 </html>
